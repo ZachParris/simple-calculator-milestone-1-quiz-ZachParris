@@ -1,17 +1,18 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+
 namespace SimpleCalculator.Tests
 {
     [TestClass]
     public class ExpressionTests
     {
-        public void ExpCanBeInstantiated()
+        [TestMethod]
+        public void ExpCanBeCreated()
         {
             Expression expNotNull = new Expression();
             Assert.IsNotNull(expNotNull);
         }
-
         [TestMethod]
         public void CaptureFirstTerm()
         {

@@ -23,9 +23,10 @@ namespace SimpleCalculator
 
                 if (match.Success)
                 {
-                    term_1 = int.Parse(match.Groups[3].Value);
+                    term_1 = int.Parse(match.Groups[1].Value);
                     _operator = char.Parse(match.Groups[2].Value);
                     term_2 = int.Parse(match.Groups[3].Value);
+
                 }
                 else
                 {

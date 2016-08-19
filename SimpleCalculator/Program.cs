@@ -12,17 +12,19 @@ namespace SimpleCalculator
         {
             int counter = 0;
             bool calculatorOn = true;
-            while (calculatorOn)
 
+            while (calculatorOn)
             {
                 string prompt = "[" + counter + "]" + ">";
                 Console.Write(prompt);
                 counter++;
                 string userInput = Console.ReadLine();
                 Expression newExp = new Expression();
-                Console.WriteLine(newExp.term_1 + newExp._operator + newExp.term_2);
+                Evaluation newEval = new Evaluation();
+                newEval.Evaluator(1, 2, "+");
+                Console.WriteLine("=" + newEval.answer);
             }
-            
+            calculatorOn = false;
         }
     }
 }
