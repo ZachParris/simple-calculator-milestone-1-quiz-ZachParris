@@ -14,6 +14,12 @@ namespace SimpleCalculator.Tests
             Assert.IsNotNull(expNotNull);
         }
         [TestMethod]
+        public void AcceptsSpaces()
+        {
+            Expression tester = new Expression();
+            tester.Parser("1 + 2");
+        }
+        [TestMethod]
         public void CaptureFirstTerm()
         {
             Expression tester = new Expression();
@@ -35,6 +41,19 @@ namespace SimpleCalculator.Tests
             Expression tester = new Expression();
             tester.Parser("1+2");
             Assert.AreEqual(2, tester.term_2);
+        }
+
+        [TestMethod]
+        public void CatchesInvalidInput()
+        {
+            Expression tester = new Expression();
+            tester.Parser("+2");
+        }
+        [TestMethod]
+        public void CathesInvalidChar()
+        {
+            Expression tester = new Expression();
+            tester.Parser("9 % M");
         }
     }
 }

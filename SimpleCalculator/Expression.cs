@@ -9,6 +9,7 @@ namespace SimpleCalculator
 {
     public class Expression
     {
+        //creates variables and assigns regex
         public int term_1 { get; set; }
         public int term_2 { get; set; }
         public char _operator { get; set; }
@@ -23,6 +24,7 @@ namespace SimpleCalculator
 
                 if (match.Success)
                 {
+                    //parse and assign input value to variables
                     term_1 = int.Parse(match.Groups[1].Value);
                     _operator = char.Parse(match.Groups[2].Value);
                     term_2 = int.Parse(match.Groups[3].Value);

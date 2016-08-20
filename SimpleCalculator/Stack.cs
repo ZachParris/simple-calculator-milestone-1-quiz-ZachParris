@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace SimpleCalculator
 {
-    class Class1
+    public class Stack
     {
+        public string lastInput { get; set; }
+        public int lastResult { get; set; }
+
     }
 }
