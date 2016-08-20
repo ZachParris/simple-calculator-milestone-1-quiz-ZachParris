@@ -26,7 +26,7 @@ namespace SimpleCalculator.Tests
         {
             Expression opTester = new Expression();
             opTester.Parser("1+2");
-            Assert.AreEqual("+", opTester._operator);
+            Assert.AreEqual('+', opTester._operator);
         }
 
         [TestMethod]

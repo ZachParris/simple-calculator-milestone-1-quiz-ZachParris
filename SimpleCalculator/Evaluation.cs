@@ -9,23 +9,23 @@ namespace SimpleCalculator
     public class Evaluation
     {
         public int answer { get; set; }
-        public void Evaluator(int first, int second, string operand)
+        public void Evaluator(int first, int second, char operand)
         {
             switch (operand)
             {
-                case "+":
+                case '+':
                     answer = first + second;
                     break;
-                case "-":
+                case '-':
                     answer = first - second;
                     break;
-                case "*":
+                case '*':
                     answer = first * second;
                     break;
-                case "/":
+                case '/':
                     answer = first / second;
                     break;
-                case "%":
+                case '%':
                     answer = first % second;
                     break;
             }

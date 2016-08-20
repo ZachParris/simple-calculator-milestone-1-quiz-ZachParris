@@ -16,7 +16,8 @@ namespace SimpleCalculator.Tests
         public void EvaluateAddExpAnswerCorrect()
         {
             Evaluation evaluate = new Evaluation();
-            Assert.AreEqual(evaluate, evaluate.answer);
+            evaluate.Evaluator(1, 2, '+');
+            Assert.AreEqual(3, evaluate.answer);
         }
     }
 }

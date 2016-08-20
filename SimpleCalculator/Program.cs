@@ -19,10 +19,11 @@ namespace SimpleCalculator
                 Console.Write(prompt);
                 counter++;
                 string userInput = Console.ReadLine();
-                Expression newExp = new Expression();
-                Evaluation newEval = new Evaluation();
-                newEval.Evaluator(1, 2, "+");
-                Console.WriteLine("=" + newEval.answer);
+                Expression newExp2 = new Expression();
+                newExp2.Parser(userInput);
+                Evaluation newEva = new Evaluation();
+                newEva.Evaluator(newExp2.term_1, newExp2.term_2, newExp2._operator);
+                Console.WriteLine("=" + newEva.answer);
             }
             calculatorOn = false;
         }

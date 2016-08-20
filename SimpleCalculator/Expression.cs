@@ -12,7 +12,7 @@ namespace SimpleCalculator
         public int term_1 { get; set; }
         public int term_2 { get; set; }
         public char _operator { get; set; }
-        string regex_match = @"^(\d)(\s*)(\+|\-|\*|\%\/)(\s*)(\d)$";
+        string regex_match = @"^(\d)\s*(\+|\-|\*|\%\/)\s*(\d)$";
         public bool invalidEntry { get; set; }
 
         public void Parser (string input)
