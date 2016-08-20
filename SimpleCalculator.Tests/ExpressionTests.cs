@@ -44,16 +44,33 @@ namespace SimpleCalculator.Tests
         }
 
         [TestMethod]
-        public void CatchesInvalidInput()
+        public void CatchesInvalidExp()
         {
             Expression tester = new Expression();
             tester.Parser("+2");
+            Assert.IsTrue(tester.invalidEntry = true);
         }
+
         [TestMethod]
-        public void CathesInvalidChar()
+        public void CatchesInvalidChar()
         {
             Expression tester = new Expression();
-            tester.Parser("9 % M");
+            tester.Parser("2<3");
+            Assert.IsTrue(tester.invalidEntry = true);
+        }
+        [TestMethod]
+        public void CatchesInvalidterm()
+        {
+            Expression tester = new Expression();
+            tester.Parser("4*H");
+            Assert.IsTrue(tester.invalidEntry = true);
+        }
+        [TestMethod]
+        public void CatchesInvalidNumberOfTerms()
+        {
+            Expression tester = new Expression();
+            tester.Parser("44+99");
+            Assert.IsTrue(tester.invalidEntry = true);
         }
     }
 }
