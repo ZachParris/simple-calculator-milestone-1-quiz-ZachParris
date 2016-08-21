@@ -34,7 +34,7 @@ namespace SimpleCalculator
                         Console.WriteLine(getLast.lastResult);
                         break;
                     case "quit":
-                        calculatorOn = false;
+                        calculatorOn = false; 
                         break;
                     case "exit":
                         calculatorOn = false;
@@ -48,7 +48,7 @@ namespace SimpleCalculator
                         getLast.lastResult = newEva.answer;
                         Console.WriteLine("=" + newEva.answer);
                         break;
-            }
+            } 
                
 
             }
