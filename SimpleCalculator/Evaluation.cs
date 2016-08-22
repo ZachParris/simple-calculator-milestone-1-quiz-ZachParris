@@ -9,7 +9,7 @@ namespace SimpleCalculator
     public class Evaluation
     {
         public int answer { get; set; }
-        public void Evaluator(int first, int second, char operand)
+        public void   Evaluator(int first, int second, char operand)
         {
             switch (operand)
             {
