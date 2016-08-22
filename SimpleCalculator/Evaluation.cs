@@ -28,6 +28,10 @@ namespace SimpleCalculator
                 case '%':
                     answer = first % second;
                     break;
+                default:
+                    Console.WriteLine("WRONG!");
+                    break;
+
             }
         }
     }
