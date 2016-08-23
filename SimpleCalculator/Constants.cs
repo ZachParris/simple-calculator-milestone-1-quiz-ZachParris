@@ -23,7 +23,7 @@ namespace SimpleCalculator
         public void AddConstantsToDictionary(string key, int value)
         {
             if (!CheckForConstValue(key))
-            {
+            { 
                 constantsList.Add(key, value);
             }
             else

@@ -28,8 +28,11 @@ namespace SimpleCalculator
                 case '%':
                     answer = first % second;
                     break;
+                case '=':
+                    Console.WriteLine("{0} saved as {1}", first, second);
+                    break;
                 default:
-                    Console.WriteLine("WRONG!");
+                    Console.WriteLine("Try Again!");
                     break;
 
             }

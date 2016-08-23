@@ -35,7 +35,6 @@ namespace SimpleCalculator
                     else
                     {
                         int _term1;
-                        int _term2;
                         if (!int.TryParse(match.Groups[1].Value, out _term1))
                         {
                             string key = match.Groups[1].Value;
@@ -45,6 +44,7 @@ namespace SimpleCalculator
 
                         _operator = char.Parse(match.Groups[2].Value);
 
+                        int _term2;
                         if (!int.TryParse(match.Groups[3].Value, out _term2))
                         {
                             string key = match.Groups[3].Value;

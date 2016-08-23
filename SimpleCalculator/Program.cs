@@ -13,11 +13,10 @@ namespace SimpleCalculator
             int counter = 0;
             bool calculatorOn = true;
             Stack getLast = new Stack();
-            Expression newExp2 = new Expression();
+            Expression newExp = new Expression();
 
             while (calculatorOn)
             {
-                //outputs "[0]>" prompt that will count each command.
                 string prompt = "[" + counter + "]>";
                 Console.Write(prompt);
                 counter++;
@@ -41,12 +40,12 @@ namespace SimpleCalculator
                     default:
                         try
                         {
-                            newExp2.Parser(userInput);
+                            newExp.Parser(userInput);
                             getLast.lastInput = userInput;
-                            Evaluation newEva = new Evaluation();
-                            newEva.Evaluator(newExp2.term_1, newExp2.term_2, newExp2._operator);
-                            getLast.lastResult = newEva.answer;
-                            Console.WriteLine("=" + newEva.answer);
+                            Evaluation eval = new Evaluation();
+                            eval.Evaluator(newExp.term_1, newExp.term_2, newExp._operator);
+                            getLast.lastResult = eval.answer;
+                            Console.WriteLine("=" + eval.answer);
                         }
                         catch (Exception e)
                         {
