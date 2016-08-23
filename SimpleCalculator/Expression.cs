@@ -42,13 +42,15 @@ namespace SimpleCalculator
                             _term1 = consts.GetConstant(key);
                         }
                         term_1 = _term1;
+
                         _operator = char.Parse(match.Groups[2].Value);
+
                         if (!int.TryParse(match.Groups[3].Value, out _term2))
                         {
                             string key = match.Groups[3].Value;
                             _term2 = consts.GetConstant(key);
                         }
-                        term_2 = int.Parse(match.Groups[3].Value);
+                        term_2 = _term2;
                     }
                 }
                 else

@@ -12,7 +12,6 @@ namespace SimpleCalculator
     {
         public string ConstVar; 
         public int ConstVal;
-        //string reqRegex = @"^(?<ConstVar>[a-z])\s?[=]\s?(?<ConstVal>-?\d+)$";
 
         private Dictionary<string, int> constantsList = new Dictionary<string, int>();
 
@@ -29,7 +28,7 @@ namespace SimpleCalculator
             }
             else
             {
-                throw new ArgumentException("Already stores variable.");
+                throw new ArgumentException("Already stored variable.");
             }
         }
 
