@@ -11,41 +11,35 @@ namespace SimpleCalculator
     public class Constants
     {
         public string ConstVar; 
-        public string ConstVal;
-        string reqRegex = @"^(?<Variable>[a-z])\s?[=]\s?(?<ConstantValue>-?\d+)$";
+        public int ConstVal;
+        //string reqRegex = @"^(?<ConstVar>[a-z])\s?[=]\s?(?<ConstVal>-?\d+)$";
 
-        Dictionary<string, int> constantsList = new Dictionary<string, int>();
+        private Dictionary<string, int> constantsList = new Dictionary<string, int>();
 
-        public void ParseConstants(string input)
+        public bool CheckForConstValue(string key)
         {
-            Match match = Regex.Match(input, reqRegex);
-            if (match.Success)
-            {
-                ConstVar = (match.Groups["ConstVar"].Value);
-                ConstVal = (match.Groups["ConstVal"].Value); 
-            }
-            else
-            {
-                throw new InvalidOperationException("The requested operation cannot be performed.");
-            }
+            return constantsList.ContainsKey(key);
         }
 
         public void AddConstantsToDictionary(string key, int value)
         {
-            constantsList.Add(key, value);
-        }
-
-        public bool CheckForConstValue(string key)
-        {
-            if (constantsList.ContainsKey(key))
+            if (!CheckForConstValue(key))
             {
-                return true;
+                constantsList.Add(key, value);
             }
             else
             {
-                return false;
+                throw new ArgumentException("Already stores variable.");
             }
         }
-     
+
+        public int GetConstant(string key)
+        {
+            if (CheckForConstValue(key))
+            {
+                return constantsList[key];
+            }
+            throw new ArgumentException($"Constant '{key}' has not been stored yet");
+        }
     }
 }
