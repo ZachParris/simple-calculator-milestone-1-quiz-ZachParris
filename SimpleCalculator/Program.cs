@@ -43,9 +43,18 @@ namespace SimpleCalculator
                             newExp.Parser(userInput);
                             getLast.lastInput = userInput;
                             Evaluation eval = new Evaluation();
-                            eval.Evaluator(newExp.term_1, newExp.term_2, newExp._operator);
+                            
                             getLast.lastResult = eval.answer;
-                            Console.WriteLine("=" + eval.answer);
+                            if (newExp.storedConstant == true)
+                            {
+                                Console.WriteLine("Stored Constant");
+                            }
+                            else
+                            {
+                                eval.Evaluator(newExp.term_1, newExp.term_2, newExp._operator);
+                                Console.WriteLine("=" + eval.answer);
+                            }
+                            newExp.storedConstant = false;
                         }
                         catch (Exception e)
                         {

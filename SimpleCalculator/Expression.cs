@@ -16,6 +16,7 @@ namespace SimpleCalculator
         string regex_match = @"^(\d*|[a-z]{1})\s*(\+|\-|\*|\%\/|=)\s*(\d*|[a-z]{1})$";
         public bool invalidEntry { get; set; }
         private Constants consts = new Constants();
+        public bool storedConstant { get; set; }
 
         public void Parser (string input)
         {
@@ -31,6 +32,7 @@ namespace SimpleCalculator
                         string key = match.Groups[1].Value;
                         int val = int.Parse(match.Groups[3].Value);
                         consts.AddConstantsToDictionary(key, val);
+                        storedConstant = true;
                     }
                     else
                     {
