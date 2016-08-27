@@ -19,14 +19,13 @@ namespace SimpleCalculator
             {
                 string prompt = "[" + counter + "]>";
                 Console.Write(prompt);
-                counter++;
 
                 string userInput = Console.ReadLine();
                 
                 switch (userInput)
                 {
                     case "lastq":
-                        Console.WriteLine(getLast.lastInput); ;
+                        Console.WriteLine(getLast.lastInput);
                         break;
                     case "last":
                         Console.WriteLine(getLast.lastResult);
@@ -43,8 +42,8 @@ namespace SimpleCalculator
                             newExp.Parser(userInput);
                             getLast.lastInput = userInput;
                             Evaluation eval = new Evaluation();
-                            
                             getLast.lastResult = eval.answer;
+
                             if (newExp.storedConstant == true)
                             {
                                 Console.WriteLine("Stored Constant");
@@ -53,6 +52,7 @@ namespace SimpleCalculator
                             {
                                 eval.Evaluator(newExp.term_1, newExp.term_2, newExp._operator);
                                 Console.WriteLine("=" + eval.answer);
+                                
                             }
                             newExp.storedConstant = false;
                         }
@@ -61,7 +61,8 @@ namespace SimpleCalculator
                             Console.WriteLine(e.Message);
                         }
                         break;
-                } 
+                }
+                counter++; 
             }
         }
     }
