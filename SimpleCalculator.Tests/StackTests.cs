@@ -14,18 +14,16 @@ namespace SimpleCalculator.Tests
             Assert.IsNotNull(tester);
         }
         [TestMethod]
-        public void StackHandlesLastEquation()
+        public void CanGetLastEquation()
         {
             Stack tester = new Stack();
-            tester.lastInput = "1+2";
-            Assert.AreEqual("1+2", tester);
+            Assert.IsNotNull(tester.lastInput);
         }
         [TestMethod]
-        public void StackHandlesLastAnswer()
+        public void CanGetLastAnswer()
         {
             Stack tester = new Stack();
-            tester.lastResult = 4; 
-            Assert.AreEqual(4, tester);
+            Assert.IsNotNull(tester.lastResult);
         }
     }
 }
