@@ -6,6 +6,7 @@ namespace SimpleCalculator.Tests
     [TestClass]
     public class StackTests
     {
+
         [TestMethod]
         public void StackCanBeCreated()
         {

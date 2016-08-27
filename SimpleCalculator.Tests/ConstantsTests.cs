@@ -1,4 +1,4 @@
-﻿ using System;
+﻿  using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace SimpleCalculator.Tests
@@ -13,9 +13,10 @@ namespace SimpleCalculator.Tests
             Assert.IsNotNull(tester);
         }
         [TestMethod]
-        public void UndefinedConstThrowsErr()
+        public void ConstantsCanBeAddedToDictionary()
         {
-
+            Constants tester = new Constants();
+            Assert.AreEqual("x=1", tester);
         }
     }
 }
