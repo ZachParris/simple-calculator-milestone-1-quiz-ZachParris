@@ -13,22 +13,47 @@ namespace SimpleCalculator
         public int term_1 { get; set; }
         public int term_2 { get; set; }
         public char _operator { get; set; }
-        string regex_match = @"^(\d)\s*(\+|\-|\*|\%\/)\s*(\d)$";
+        string regex_match = @"^([-]?\d+|[a-z]{1})\s*(\+|\-|\*|\%|\/|=)\s*([-]?\d+|[a-z]{1})$";
         public bool invalidEntry { get; set; }
+        private Constants consts = new Constants();
+        public bool storedConstant { get; set; }
 
         public void Parser (string input)
         {
-            try
+            try 
             {
                 Match match = Regex.Match(input, regex_match);
 
                 if (match.Success)
                 {
-                    //parse and assign input value to variables
-                    term_1 = int.Parse(match.Groups[1].Value);
-                    _operator = char.Parse(match.Groups[2].Value);
-                    term_2 = int.Parse(match.Groups[3].Value);
+                    // check to see if we are assigning a constant
+                    if (char.Parse(match.Groups[2].Value) == '=')
+                    {
+                        string key = match.Groups[1].Value;
+                        int val = int.Parse(match.Groups[3].Value);
+                        consts.AddConstantsToDictionary(key, val);
+                        storedConstant = true;
+                    }
+                    else
+                    {
+                        int _term1;
+                        if (!int.TryParse(match.Groups[1].Value, out _term1))
+                        {
+                            string key = match.Groups[1].Value;
+                            _term1 = consts.GetConstant(key);
+                        }
+                        term_1 = _term1;
 
+                        _operator = char.Parse(match.Groups[2].Value);
+
+                        int _term2;
+                        if (!int.TryParse(match.Groups[3].Value, out _term2))
+                        {
+                            string key = match.Groups[3].Value;
+                            _term2 = consts.GetConstant(key);
+                        }
+                        term_2 = _term2;
+                    }
                 }
                 else
                 {

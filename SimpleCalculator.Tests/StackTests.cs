@@ -6,6 +6,7 @@ namespace SimpleCalculator.Tests
     [TestClass]
     public class StackTests
     {
+
         [TestMethod]
         public void StackCanBeCreated()
         {
@@ -13,18 +14,19 @@ namespace SimpleCalculator.Tests
             Assert.IsNotNull(tester);
         }
         [TestMethod]
-        public void StackHandlesLastEquation()
+        public void CanGetLastEquation()
         {
             Stack tester = new Stack();
             tester.lastInput = "1+2";
-            Assert.AreEqual("1+2", tester);
+            Assert.AreEqual("1+2", tester.lastInput);
         }
         [TestMethod]
-        public void StackHandlesLastAnswer()
+        public void CanGetLastAnswer()
         {
             Stack tester = new Stack();
-            tester.lastResult = 4; 
-            Assert.AreEqual(4, tester);
+            Assert.AreEqual(0, tester.lastResult);
+        }
+      
+
         }
     }
-}

@@ -29,7 +29,7 @@ namespace SimpleCalculator
                     answer = first % second;
                     break;
                 default:
-                    Console.WriteLine("WRONG!");
+                    Console.WriteLine("Try Again!");
                     break;
 
             }

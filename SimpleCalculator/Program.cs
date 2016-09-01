@@ -13,44 +13,57 @@ namespace SimpleCalculator
             int counter = 0;
             bool calculatorOn = true;
             Stack getLast = new Stack();
-
+            Expression newExp = new Expression();
 
             while (calculatorOn)
             {
-                //outputs "[0]>" prompt that counts commands 
                 string prompt = "[" + counter + "]>";
                 Console.Write(prompt);
-                counter++;
-
-                //Capture/validate input w/regex and parse value
                 string userInput = Console.ReadLine();
-                
-                switch (userInput)
+                if (!String.IsNullOrEmpty(userInput))
                 {
-                    case "lastq":
-                        Console.WriteLine(getLast.lastInput); ;
-                        break;
-                    case "last":
-                        Console.WriteLine(getLast.lastResult);
-                        break;
-                    case "quit":
-                        calculatorOn = false; 
-                        break;
-                    case "exit":
-                        calculatorOn = false;
-                        break;
-                    default:
-                        Expression newExp2 = new Expression();
-                        newExp2.Parser(userInput);
-                        getLast.lastInput = userInput;
-                        Evaluation newEva = new Evaluation();
-                        newEva.Evaluator(newExp2.term_1, newExp2.term_2, newExp2._operator);
-                        getLast.lastResult = newEva.answer;
-                        Console.WriteLine("=" + newEva.answer);
-                        break;
-            } 
-               
+                    switch (userInput)
+                    {
+                        case "lastq":
+                            Console.WriteLine(getLast.lastInput);
+                            break;
+                        case "last":
+                            Console.WriteLine(getLast.lastResult);
+                            break;
+                        case "quit":
+                            calculatorOn = false;
+                            break;
+                        case "exit":
+                            calculatorOn = false;
+                            break;
+                        default:
+                            try
+                            {
+                                newExp.Parser(userInput);
+                                getLast.lastInput = userInput;
+                                Evaluation eval = new Evaluation();
+                                getLast.lastResult = eval.answer;
 
+                                if (newExp.storedConstant == true)
+                                {
+                                    Console.WriteLine("Stored Constant");
+                                }
+                                else
+                                {
+                                    eval.Evaluator(newExp.term_1, newExp.term_2, newExp._operator);
+                                    Console.WriteLine("=" + eval.answer);
+
+                                }
+                                newExp.storedConstant = false;
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine(e.Message);
+                            }
+                            break;
+                    }
+                    counter++;
+                }
             }
         }
     }

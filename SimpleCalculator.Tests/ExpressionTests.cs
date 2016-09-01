@@ -48,7 +48,7 @@ namespace SimpleCalculator.Tests
         {
             Expression tester = new Expression();
             tester.Parser("+2");
-            Assert.IsTrue(tester.invalidEntry = true);
+            Assert.IsTrue(tester.invalidEntry);
         }
 
         [TestMethod]
