@@ -16,7 +16,16 @@ namespace SimpleCalculator.Tests
         public void ConstantsCanBeAddedToDictionary()
         {
             Constants tester = new Constants();
-            Assert.AreEqual("x=1", tester);
+            tester.AddConstantsToDictionary("x", 1);
+            Assert.AreEqual(tester.GetConstant("x"), 1);
+        }
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void ExceptionThrownForExistingVar()
+        {
+            Constants tester = new Constants();
+            tester.AddConstantsToDictionary("x", 1);
+            tester.AddConstantsToDictionary("x", 2);
         }
     }
 }

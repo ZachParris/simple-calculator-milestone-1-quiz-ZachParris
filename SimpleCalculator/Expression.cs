@@ -13,14 +13,14 @@ namespace SimpleCalculator
         public int term_1 { get; set; }
         public int term_2 { get; set; }
         public char _operator { get; set; }
-        string regex_match = @"^(\d*|[a-z]{1})\s*(\+|\-|\*|\%|\/|=)\s*(\d*|[a-z]{1})$";
+        string regex_match = @"^([-]?\d+|[a-z]{1})\s*(\+|\-|\*|\%|\/|=)\s*([-]?\d+|[a-z]{1})$";
         public bool invalidEntry { get; set; }
         private Constants consts = new Constants();
         public bool storedConstant { get; set; }
 
         public void Parser (string input)
         {
-            try
+            try 
             {
                 Match match = Regex.Match(input, regex_match);
 
